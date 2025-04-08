@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>credit card visualiser</title>
+
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="logo">
+                <span class="logo-icon"><i class="fas fa-credit-card"></i></span>
+                <span class="logo-text">CardMod</span>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="active"><i class="fas fa-palette"></i><span>Customize</span></li>
+                    <li><a href="https://codepen.io/AshlynD" target="_blank"><i class="fas fa-shopping-cart"></i><span>Shop</span></a></li>
+                    <li><a href="https://codepen.io/AshlynD" target="_blank"><i class="fas fa-history"></i><span>History</span></a></li>
+                    <li><a href="https://codepen.io/AshlynD" target="_blank"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-info">
+                    <p class="user-name">Guest User</p>
+                    <p class="user-status">Free Account</p>
+                </div>
+            </div>
+        </div>
+        <main class="content">
+            <header class="app-header">
+                <h1>Credit Card Customizer</h1>
+                <div class="actions">
+                    <button class="btn btn-secondary" id="resetBtn">
+                        <i class="fas fa-undo"></i>
+                        <span>Reset</span>
+                    </button>
+                    <button class="btn btn-primary" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        <span>Download</span>
+                    </button>
+                </div>
+            </header>
+            <div class="app-body">
+                <div class="card-preview-container">
+                    <div class="card-preview-wrapper">
+                        <div class="card-preview" id="creditCard">
+                            <div class="card-chip"></div>
+                            <div class="card-brand" id="cardBrand">
+                                <img src="https://via.placeholder.com/60" id="brandLogo" alt="Card Brand">
+                            </div>
+                            <div class="card-number" id="cardNumber">•••• •••• •••• ••••</div>
+                            <div class="card-details">
+                                <div class="card-holder">
+                                    <span class="label">Card Holder</span>
+                                    <span class="value" id="cardHolder">YOUR NAME</span>
+                                </div>
+                                <div class="card-expiry">
+                                    <span class="label">Expires</span>
+                                    <span class="value" id="cardExpiry">MM/YY</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-reflection"></div>
+                    </div>
+                </div>
+                <div class="customization-panel">
+                    <div class="panel-section">
+                        <h2>Card Brand</h2>
+                        <div class="brand-options">
+                            <div class="brand-option" data-brand="visa" data-logo="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                                <span>Visa</span>
+                            </div>
+                            <div class="brand-option" data-brand="mastercard" data-logo="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                                <span>Mastercard</span>
+                            </div>
+                            <div class="brand-option" data-brand="amex" data-logo="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="American Express">
+                                <span>Amex</span>
+                            </div>
+                            <div class="brand-option" data-brand="discover" data-logo="https://logos-world.net/wp-content/uploads/2023/02/Discover-Logo.png">
+                                <img src="https://logos-world.net/wp-content/uploads/2023/02/Discover-Logo.png" alt="Discover">
+                                <span>Discover</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-section">
+                        <h2>Background Style</h2>
+                        <div class="style-options">
+                            <div class="style-option" data-style="gradient">
+                                <div class="preview gradient"></div>
+                                <span>Gradient</span>
+                            </div>
+                            <div class="style-option" data-style="solid">
+                                <div class="preview solid"></div>
+                                <span>Solid</span>
+                            </div>
+                            <div class="style-option" data-style="pattern">
+                                <div class="preview pattern"></div>
+                                <span>Pattern</span>
+                            </div>
+                            <div class="style-option" data-style="image">
+                                <div class="preview image"></div>
+                                <span>Image</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-section">
+                        <h2>Color Theme</h2>
+                        <div class="color-picker">
+                            <div class="color-option active" data-color="#1a1f36,#5468ff" style="background: linear-gradient(45deg, #1a1f36, #5468ff)"></div>
+                            <div class="color-option" data-color="#0f0c29,#302b63" style="background: linear-gradient(45deg, #0f0c29, #302b63)"></div>
+                            <div class="color-option" data-color="#000046,#1CB5E0" style="background: linear-gradient(45deg, #000046, #1CB5E0)"></div>
+                            <div class="color-option" data-color="#3a1c71,#d76d77" style="background: linear-gradient(45deg, #3a1c71, #d76d77)"></div>
+                            <div class="color-option" data-color="#000000,#434343" style="background: linear-gradient(45deg, #000000, #434343)"></div>
+                            <div class="color-option" data-color="#44A08D,#093637" style="background: linear-gradient(45deg, #44A08D, #093637)"></div>
+                            <div class="color-option" data-color="#8E2DE2,#4A00E0" style="background: linear-gradient(45deg, #8E2DE2, #4A00E0)"></div>
+                            <div class="color-option" data-color="#141E30,#243B55" style="background: linear-gradient(45deg, #141E30, #243B55)"></div>
+                        </div>
+                    </div>
+                    <div class="panel-section">
+                        <h2>Card Text</h2>
+                        <div class="form-group">
+                            <label for="nameInput">Cardholder Name</label>
+                            <input type="text" id="nameInput" placeholder="Enter your name" maxlength="26" class="input-field">
+                        </div>
+                        <div class="form-group">
+                            <label for="numberInput">Card Number Display</label>
+                            <div class="select-wrapper">
+                                <select id="numberInput" class="input-field">
+                                    <option value="dots">•••• •••• •••• ••••</option>
+                                    <option value="x">XXXX XXXX XXXX XXXX</option>
+                                    <option value="last4">•••• •••• •••• 1234</option>
+                                    <option value="fake">4321 5678 9012 3456</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryInput">Expiry Date</label>
+                            <input type="text" id="expiryInput" placeholder="MM/YY" maxlength="5" class="input-field">
+                        </div>
+                    </div>
+                    <div class="panel-section">
+                        <h2>Effects</h2>
+                        <div class="toggle-group">
+                            <label class="toggle">
+                                <span class="toggle-label">Holographic Effect</span>
+                                <input type="checkbox" id="holographicToggle">
+                                <span class="toggle-switch"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-group">
+                            <label class="toggle">
+                                <span class="toggle-label">Glass Effect</span>
+                                <input type="checkbox" id="glassToggle">
+                                <span class="toggle-switch"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-group">
+                            <label class="toggle">
+                                <span class="toggle-label">3D Effect</span>
+                                <input type="checkbox" id="threeDToggle" checked>
+                                <span class="toggle-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="notifications" id="notifications"></div>
+    </div>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const creditCard = document.getElementById('creditCard');
+    const cardBrand = document.getElementById('cardBrand');
+    const brandLogo = document.getElementById('brandLogo');
+    const cardNumber = document.getElementById('cardNumber');
+    const cardHolder = document.getElementById('cardHolder');
+    const cardExpiry = document.getElementById('cardExpiry');
+    const nameInput = document.getElementById('nameInput');
+    const numberInput = document.getElementById('numberInput');
+    const expiryInput = document.getElementById('expiryInput');
+    const holographicToggle = document.getElementById('holographicToggle');
+    const glassToggle = document.getElementById('glassToggle');
+    const threeDToggle = document.getElementById('threeDToggle');
+    const resetBtn = document.getElementById('resetBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const notificationsContainer = document.getElementById('notifications');
+    const brandOptions = document.querySelectorAll('.brand-option');
+    const styleOptions = document.querySelectorAll('.style-option');
+    const colorOptions = document.querySelectorAll('.color-option');
+
+    let cardSettings = {
+        brand: 'visa',
+        brandLogo: 'https://via.placeholder.com/60',
+        style: 'gradient',
+        colors: ['#1a1f36', '#5468ff'],
+        isHolographic: false,
+        isGlass: false,
+        is3D: true
+    };
+
+    let cardWrapperRect = creditCard.parentElement.getBoundingClientRect();
+    let cardCenterX = cardWrapperRect.left + cardWrapperRect.width / 2;
+    let cardCenterY = cardWrapperRect.top + cardWrapperRect.height / 2;
+
+    function updateCardAppearance() {
+
+        switch(cardSettings.style) {
+            case 'gradient':
+                creditCard.style.background = `linear-gradient(135deg, ${cardSettings.colors[0]}, ${cardSettings.colors[1]})`;
+                break;
+            case 'solid':
+                creditCard.style.background = cardSettings.colors[0];
+                break;
+            case 'pattern':
+                creditCard.style.background = cardSettings.colors[0];
+                creditCard.style.backgroundImage = `radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px)`;
+                creditCard.style.backgroundSize = '10px 10px';
+                break;
+            case 'image':
+                creditCard.style.background = `url('https://via.placeholder.com/360x220') center/cover`;
+                break;
+        }
+
+        if (cardSettings.isHolographic) {
+            creditCard.classList.add('holographic');
+        } else {
+            creditCard.classList.remove('holographic');
+        }
+
+        if (cardSettings.isGlass) {
+            creditCard.classList.add('glass');
+        } else {
+            creditCard.classList.remove('glass');
+        }
+
+        if (cardSettings.is3D) {
+            creditCard.style.transition = 'transform 0.1s ease';
+            document.addEventListener('mousemove', handle3DEffect);
+        } else {
+            creditCard.style.transition = 'transform 0.3s ease';
+            document.removeEventListener('mousemove', handle3DEffect);
+            creditCard.style.transform = 'rotateX(0) rotateY(0)';
+        }
+
+        brandLogo.src = cardSettings.brandLogo;
+    }
+
+    function handle3DEffect(event) {
+        cardWrapperRect = creditCard.parentElement.getBoundingClientRect();
+        cardCenterX = cardWrapperRect.left + cardWrapperRect.width / 2;
+        cardCenterY = cardWrapperRect.top + cardWrapperRect.height / 2;
+
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        const rotateY = ((mouseX - cardCenterX) / (cardWrapperRect.width / 2)) * 10;
+        const rotateX = ((cardCenterY - mouseY) / (cardWrapperRect.height / 2)) * 10;
+
+        creditCard.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+
+        const reflection = document.querySelector('.card-reflection');
+        reflection.style.opacity = 0.5 + Math.abs(rotateX) / 50;
+        reflection.style.transform = `perspective(100px) rotateX(60deg) translateX(${rotateY * -2}px)`;
+    }
+
+    brandOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            brandOptions.forEach(opt => opt.classList.remove('active'));
+            option.classList.add('active');
+
+            cardSettings.brand = option.dataset.brand;
+            cardSettings.brandLogo = option.dataset.logo;
+            updateCardAppearance();
+            showNotification('Brand updated!');
+        });
+    });
+
+    styleOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            styleOptions.forEach(opt => opt.classList.remove('active'));
+            option.classList.add('active');
+
+            cardSettings.style = option.dataset.style;
+            updateCardAppearance();
+            showNotification('Style updated!');
+        });
+    });
+
+    colorOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            colorOptions.forEach(opt => opt.classList.remove('active'));
+            option.classList.add('active');
+
+            cardSettings.colors = option.dataset.color.split(',');
+            updateCardAppearance();
+            showNotification('Color theme updated!');
+        });
+    });
+
+    nameInput.addEventListener('input', () => {
+        cardHolder.textContent = nameInput.value.toUpperCase() || 'YOUR NAME';
+    });
+
+    numberInput.addEventListener('change', () => {
+        switch(numberInput.value) {
+            case 'dots':
+                cardNumber.textContent = '•••• •••• •••• ••••';
+                break;
+            case 'x':
+                cardNumber.textContent = 'XXXX XXXX XXXX XXXX';
+                break;
+            case 'last4':
+                cardNumber.textContent = '•••• •••• •••• 1234';
+                break;
+            case 'fake':
+                cardNumber.textContent = '4321 5678 9012 3456';
+                break;
+        }
+    });
+
+    expiryInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 0) {
+            if (value.length <= 2) {
+                value = value;
+            } else {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+        }
+        e.target.value = value;
+        cardExpiry.textContent = value || 'MM/YY';
+    });
+
+    holographicToggle.addEventListener('change', () => {
+        cardSettings.isHolographic = holographicToggle.checked;
+        updateCardAppearance();
+        showNotification(cardSettings.isHolographic ? 'Holographic effect enabled!' : 'Holographic effect disabled!');
+    });
+
+    glassToggle.addEventListener('change', () => {
+        cardSettings.isGlass = glassToggle.checked;
+        updateCardAppearance();
+        showNotification(cardSettings.isGlass ? 'Glass effect enabled!' : 'Glass effect disabled!');
+    });
+
+    threeDToggle.addEventListener('change', () => {
+        cardSettings.is3D = threeDToggle.checked;
+        updateCardAppearance();
+        showNotification(cardSettings.is3D ? '3D effect enabled!' : '3D effect disabled!');
+    });
+
+    resetBtn.addEventListener('click', () => {
+        cardSettings = {
+            brand: 'visa',
+            brandLogo: 'https://via.placeholder.com/60',
+            style: 'gradient',
+            colors: ['#1a1f36', '#5468ff'],
+            isHolographic: false,
+            isGlass: false,
+            is3D: true
+        };
+
+        nameInput.value = '';
+        numberInput.value = 'dots';
+        expiryInput.value = '';
+        cardHolder.textContent = 'YOUR NAME';
+        cardNumber.textContent = '•••• •••• •••• ••••';
+        cardExpiry.textContent = 'MM/YY';
+
+        holographicToggle.checked = false;
+        glassToggle.checked = false;
+        threeDToggle.checked = true;
+
+        brandOptions.forEach(opt => opt.classList.remove('active'));
+        brandOptions[0].classList.add('active');
+
+        styleOptions.forEach(opt => opt.classList.remove('active'));
+        styleOptions[0].classList.add('active');
+
+        colorOptions.forEach(opt => opt.classList.remove('active'));
+        colorOptions[0].classList.add('active');
+
+        updateCardAppearance();
+        showNotification('Card reset to defaults!');
+    });
+
+    downloadBtn.addEventListener('click', () => {
+        html2canvas(creditCard, {
+            backgroundColor: null,
+            useCORS: true,
+            scale: 2
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `custom-card-${Date.now()}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            showNotification('Card image downloaded!');
+        }).catch(err => {
+            console.error('Error downloading card:', err);
+            showNotification('Error downloading card image!', true);
+        });
+    });
+
+    function showNotification(message, isError = false) {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.innerHTML = `
+            <span class="notification-icon">
+                <i class="fas ${isError ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i>
+            </span>
+            <span class="notification-message">${message}</span>
+        `;
+
+        notificationsContainer.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+
+    function loadHtml2Canvas() {
+        const script = document.createElement('script');
+        script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+        script.onload = () => console.log('html2canvas loaded');
+        script.onerror = () => console.error('Failed to load html2canvas');
+        document.body.appendChild(script);
+    }
+
+    updateCardAppearance();
+    loadHtml2Canvas();
+});
+    </script>
+</body>
+</html>
+
+</body>
+</html>
